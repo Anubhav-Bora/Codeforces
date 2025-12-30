@@ -1,5 +1,6 @@
 #include <bits/stdc++.h>
 using namespace std;
+
 int main()
 {
     int t;
@@ -8,15 +9,25 @@ int main()
     {
         int n;
         cin >> n;
-        string s;
-        cin >> s;
-        int l = 0;
-        int r = n - 1;
-        while (l < r && ((s[l] == '0' && s[r] == '1') || (s[r] == '0' && s[l] == '1')))
+        int total_xor = 0;
+        for (int i = 0; i < n; i++)
         {
-            l++;
-            r--;
+            int x;
+            cin >> x;
+            total_xor ^= x;
         }
-        cout << r - l + 1 << endl;
+
+        if (n % 2 == 1)
+        {
+            cout << total_xor << '\n';
+        }
+        else
+        {
+            if (total_xor == 0)
+                cout << 0 << '\n';
+            else
+                cout << -1 << '\n';
+        }
     }
+    return 0;
 }
